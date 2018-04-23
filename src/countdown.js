@@ -68,7 +68,7 @@ var Countdown = function(el, options) {
      * @return {Object} Object with the diff information (years, days, hours, min, sec, millisec)
      */
     this.getDiffDate = function() {
-        var diff = (this.options.date.getTime() - Date.now() + this.options.offset) / 1000;
+        var diff = Math.round((this.options.date.getTime() - Date.now() + this.options.offset) / 1000);
 
         var dateData = {
             years:    0,
@@ -107,7 +107,7 @@ var Countdown = function(el, options) {
             diff -= dateData.min * 60;
         }
 
-        dateData.sec = Math.round(diff);
+        dateData.sec = diff;
 
         dateData.millisec = diff % 1 * 1000;
 
